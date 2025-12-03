@@ -23,7 +23,13 @@ app.get("/validar/:cedula", (req, res) => {
     const esValida = validarCedula(cedula);
     res.json({ cedula, valida: esValida });
 });
-
-app.listen(3000, () => {
-    console.log("Servicio web ejecutándose en http://localhost:3000");
+app.get("/", (req, res) => {
+    res.send("Servicio de validación de cédulas funcionando ✔");
 });
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log("Servicio web ejecutándose en el puerto " + PORT);
+});
+
